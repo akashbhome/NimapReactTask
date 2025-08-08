@@ -1,0 +1,47 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+
+}
+
+.nav{
+  justify-content: space-between;
+  padding: 10px 70px;
+}
+
+.nav li{
+  list-style: none;
+}
+.nav li .link{
+  color: black;
+
+}
+
+.nav li .link:hover{
+  color: rgb(240, 9, 9);
+
+}
+
+.allMovie{
+width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.cast{
+  width:19%;
+  height: 220px;
+  gap:10px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  
+}
+
+.castDetail{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
