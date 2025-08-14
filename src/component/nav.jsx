@@ -15,9 +15,9 @@ let Nav=()=>{
   }
         return<>
           <div className='container-fluid nav d-flex bg-secondary'>
-                <h2 className='text-danger mt-2 p-0'><Link to="/" className='link'>MovieDb</Link></h2>
+                <h2 className='text-danger mt-2 p-0'><Link to="/" className='link text-danger'>MovieDb</Link></h2>
 
-                <button className='btn btn-outline-secondary   d-md-none' onClick={()=>setIsOpen(!isOpen)}> ☰</button>
+                <button className='btn btn-outline-danger  d-md-none' onClick={()=>setIsOpen(!isOpen)}> ☰</button>
                <div className={`${isOpen?'menu-open':'menu-closed'} nav-menu`}>
                  <ul className='nav-list d-flex p-1'>
                     <li className='mx-2 mt-2'><Link to="/" className='link'>Popular</Link></li>
