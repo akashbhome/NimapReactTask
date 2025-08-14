@@ -1,6 +1,6 @@
 import React,{useState,useEffect}from 'react';
 import { useLocation } from 'react-router-dom';
-import {castDetail} from './service/service.js'
+import {castDetail} from '../service/service.js'
 let MovieDetail=()=>{
 let location =useLocation();
 let {detail}=location.state||{};
@@ -22,7 +22,7 @@ useEffect(()=>{
 
         return<>
                     <div className='container-fluid bg-dark pt-5 p-5 '>
-                        <div className='container shadow w-100 bg-light rounded p-0 movieContainer mt-5'>
+                        <div className='container-fluid shadow w-100 bg-light rounded p-0 movieContainer mt-5'>
                               <div className=' movieImg rounded'>
                                 <img src={`https://image.tmdb.org/t/p/w500/${detail.poster_path}`} alt="" style={{width:"100%",height:"100%"}} />
                             </div>
@@ -42,8 +42,8 @@ useEffect(()=>{
                           
                         </div>
 
-                        <h1 className='mt-5 mx-5 text-light'>Cast</h1>
-                        <div className='container-fluid w-100 castDetail p-3'>
+                        <h1 className='mt-5 mx-1 text-light'>Cast</h1>
+                        <div className='container-fluid w-100 castDetail p-0'>
                         
                         {
 

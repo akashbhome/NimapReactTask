@@ -1,21 +1,30 @@
 import React,{useState,useEffect}from "react";
 
-import { useLocation } from "react-router-dom";
+import { useLocation,useNavigate } from "react-router-dom";
 import { searchResult } from "../service/service";
 let SearchMovie=()=>{
 
     let [show,setsearch]=useState([]);
+
     let location=useLocation();
+    let navigate=useNavigate();
+
     let search = location.state?.searchVal || "";
 
 let AllSearchResult=async()=>{
     let result=await searchResult(search);
     setsearch(result);
-
 }
+let detailsPage=(data)=>{
+
+           navigate("/movieDetail",{state:{detail:data}})
+    }
+
 useEffect(()=>{
         AllSearchResult();
 },[search]);
+
+
         return<>
                 <div className='container-fluid w-100 p-5 allMovie bg-dark'>
                           <div className="container-fluid allMovie bg-dark ">

@@ -7,7 +7,7 @@ let {detail}=location.state||{};
 
         return<>
                     <div className='container-fluid bg-dark pt-5 p-5 '>
-                        <div className='container w-100 shadow  rounded bg-light movieContainer mt-5 p-0'>
+                        <div className='container-fluid w-100 shadow  rounded bg-light movieContainer mt-5 p-0'>
                              <div className='movieImg  rounded'>
                                 <img src={`https://image.tmdb.org/t/p/w500/${detail.poster_path}`} alt="" style={{width:"100%",height:"100%"}} />
                             </div>

@@ -1,12 +1,13 @@
 import React ,{useState,useEffect}from "react";
-import { topRatingMovie } from "./service/service";
+import { topRatingMovie } from "../service/service";
 import { useNavigate } from "react-router-dom";
 
 let TopRating=()=>{
     let navigate=useNavigate();
     let [topMovie,setMovie]=useState([]);
     let [page,setpage]=useState(1);
-            let TopRatingDetail=async()=>{
+    
+    let TopRatingDetail=async()=>{
 
             let result=await topRatingMovie(page);
             setMovie(result);
@@ -16,9 +17,9 @@ let TopRating=()=>{
                 TopRatingDetail();
             },[page]);
 
-            let detailsPage=(data)=>{
+    let detailsPage=(data)=>{
 
-           navigate("/topDetail",{state:{detail:data}})
+           navigate("/movieDetail",{state:{detail:data}})
     }
      let nextpage=()=>{
   setpage(page+1)
@@ -32,7 +33,7 @@ let TopRating=()=>{
 
         return<>
            <div className="container-fluid bg-dark w-100 p-5 allMovie">
-         <h1>Top Rating Movies</h1>
+         <h1 className="text-light">Top Rating Movies</h1>
 
          <div className="container-fluid allMovie bg-dark">
             {
@@ -47,7 +48,10 @@ let TopRating=()=>{
                 ))
             }
          </div>
-         <div ><button className='btn btn-primary mx-2' onClick={prevpage}>Prev</button><span className='mx-3 text-light'>Page : {page}</span><button className='btn btn-primary' onClick={nextpage}>Next </button></div>
+        <div className="m-auto" ><button className='btn btn-primary mx-2' onClick={prevpage}>Prev</button>
+                                 <span className='mx-3 text-light'>Page : {page}</span>
+                                 <button className='btn btn-primary' onClick={nextpage}>Next </button>
+                </div>
 
            </div>
         </>

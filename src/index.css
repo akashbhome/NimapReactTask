@@ -7,7 +7,8 @@
 
 .nav{
   justify-content: space-between;
-  padding: 10px 150px;
+  flex-wrap: wrap;
+  padding: 5px 70px;
 }
 
 .nav li{
@@ -20,7 +21,34 @@
 
 .nav li .link:hover{
   color: rgb(240, 9, 9);
+}
+.nav-menu{
+  display: flex;
+  align-items: center;
+}
 
+@media screen and (max-width:800px) {
+  
+    .nav-menu{
+      display: none;
+      width: 100%;
+    }
+    .menu-open{
+      display: block;
+    }
+    .nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 0;
+    margin: 0;
+    align-items: center;
+  }
+
+  .nav-list li {
+    
+    text-align: center;
+  }
 }
 
 .allMovie{
@@ -130,6 +158,8 @@ width: 100%;
 } 
 @media screen and (max-width:590px) {
   .cast{
-    width:90%;
+    width:60%;
+    margin: auto;
+    margin-bottom: 10px;
   }
 } 

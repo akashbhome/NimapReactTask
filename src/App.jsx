@@ -2,12 +2,12 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css';
-import MovieDetail from './movieDetailPage';
-import Upcoming from './upcaming';
-import TopRating from './topRating';
-import Nav from './nav';
-import TopDetailPage from './topdetailsPage';
-import Popular from './popular';
+import MovieDetail from './component/movieDetailPage';
+import Upcoming from './component/upcaming';
+import TopRating from './component/topRating';
+import Nav from './component/nav';
+import TopDetailPage from './component/topdetailsPage';
+import Popular from './component/popular';
 import SearchMovie from './component/searchPage';
 import { BrowserRouter,Routes,Route } from 'react-router-dom'
 function App() {

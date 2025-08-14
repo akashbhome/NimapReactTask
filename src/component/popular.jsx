@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react';
-import{getAllMovies} from './service/service.js'
+import{getAllMovies} from '../service/service.js'
 import { useNavigate } from 'react-router-dom';
 let Popular=()=>{
 
@@ -49,7 +49,10 @@ let Popular=()=>{
                 ))
             }
               </div>
-            <div ><button className='btn btn-primary mx-2' onClick={prevpage}>Prev</button><span className='mx-3 text-light'>Page : {page}</span><button className='btn btn-primary' onClick={nextpage}>Next </button></div>
+            <div className='m-auto'><button className='btn btn-primary mx-2' onClick={prevpage}>Prev</button>
+                  <span className='mx-3 text-light'>Page : {page}</span>
+                  <button className='btn btn-primary' onClick={nextpage}>Next </button>
+            </div>
         </div>
         
         </>
