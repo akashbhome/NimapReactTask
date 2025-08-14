@@ -8,6 +8,7 @@ import TopRating from './topRating';
 import Nav from './nav';
 import TopDetailPage from './topdetailsPage';
 import Popular from './popular';
+import SearchMovie from './component/searchPage';
 import { BrowserRouter,Routes,Route } from 'react-router-dom'
 function App() {
 
@@ -19,8 +20,11 @@ function App() {
               <Route path="/" element={<Popular/>}/>
               <Route path="/toprating" element={<TopRating/>}/>
               <Route path="upcoming" element={<Upcoming/>}/>
-              <Route path="/movieDetail" element={<MovieDetail/>}></Route>
+
+              <Route path="/movieDetail" element={<MovieDetail/>}/>
               <Route path="/topDetail" element={<TopDetailPage/>}/>
+
+              <Route path="/search" element={<SearchMovie/>}/>
             </Routes>
           
           </BrowserRouter>

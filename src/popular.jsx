@@ -6,10 +6,10 @@ let Popular=()=>{
         let navigate=useNavigate();
 
     let [allMovie,setMovie]=useState([]);
-
+    let [page,setpage]=useState(1);
     let getMovies=async()=>{
        try{
-         let result= await getAllMovies();
+         let result= await getAllMovies(page);
         setMovie(result);
        }
        catch(err){
@@ -18,29 +18,38 @@ let Popular=()=>{
     }
     useEffect(()=>{
             getMovies();
-    },[]);
+    },[page]);
 
     let detailsPage=(data)=>{
            navigate("/movieDetail",{state:{detail:data}})
     }
- 
+ let nextpage=()=>{
+  setpage(page+1)
+ }
+
+ let prevpage=()=>{
+  if(page>1){
+    setpage(page-1)
+  }
+ }
+
         return<>
         <div className='container-fluid w-100 p-5 allMovie bg-dark'>
             
               <div className="container-fluid allMovie bg-dark ">
                 {
                   allMovie.map((item)=>(
-                    <div className=' shoadow mx-3 bg-dark border mb-5 p-0' onClick={(e)=>{detailsPage(item)}} style={{width:"20%",height:"375px"}}>
-                        <div className='container-fluid w-100  mt-2' style={{height:"250px"}}>
-                            <img src={`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`} alt="" style={{width:"100%",height:"100%"}} />
+                    <div className=' shadow mx-0 bg-dark showBlock mb-5 p-0' onClick={(e)=>{detailsPage(item)}}>
+                        <div className='container-fluid w-100 p-0  mt-2 blockHeight'>
+                            <img src={`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`} alt="" />
                         </div>
-                      <center ><h5 className='mt-3 text-light'> {item.title}</h5></center> 
-                      <p className='text-light mx-5'>Rating : {item.vote_average}</p>
+                      <center ><h5 className='mt-3 mx-3 text-light'> {item.title}</h5></center> 
+                      <p className='text-light mx-3'><span className='text-warning text-bold'>★</span> {item.vote_average}</p>
                     </div>
                 ))
             }
               </div>
-            
+            <div ><button className='btn btn-primary mx-2' onClick={prevpage}>Prev</button><span className='mx-3 text-light'>Page : {page}</span><button className='btn btn-primary' onClick={nextpage}>Next </button></div>
         </div>
         
         </>

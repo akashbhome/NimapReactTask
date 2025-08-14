@@ -5,37 +5,50 @@ import { useNavigate } from "react-router-dom";
 let TopRating=()=>{
     let navigate=useNavigate();
     let [topMovie,setMovie]=useState([]);
-
+    let [page,setpage]=useState(1);
             let TopRatingDetail=async()=>{
 
-            let result=await topRatingMovie();
+            let result=await topRatingMovie(page);
             setMovie(result);
 
             }
             useEffect(()=>{
                 TopRatingDetail();
-            },[]);
+            },[page]);
 
             let detailsPage=(data)=>{
 
            navigate("/topDetail",{state:{detail:data}})
     }
+     let nextpage=()=>{
+  setpage(page+1)
+ }
+
+ let prevpage=()=>{
+    if(page>1){
+            setpage(page-1)
+    }
+ }
 
         return<>
-           <div className="container-fluid bg-dark" style={{minHeight:"100vh"}}>
+           <div className="container-fluid bg-dark w-100 p-5 allMovie">
          <h1>Top Rating Movies</h1>
 
-         <div className="container-fluid mt-5 text-light d-flex allMovie w-100">
+         <div className="container-fluid allMovie bg-dark">
             {
                 topMovie.map((top)=>(
-                    <div className="border mx-3 mb-3" style={{width:"20%",height:"350px"}} onClick={(e)=>{detailsPage(top)}}>
-                        <img src={`https://image.tmdb.org/t/p/w500/${top.backdrop_path}`} alt="" className="w-100" style={{height:"75%"}}/>
-                          <h6 className="mt-2 mx-2">  {top.title}</h6>
-                          <p className="mt-2 mx-2">Rating : {top.vote_average}</p>
+                    <div className="shadow mx-0 bg-dark showBlock mb-5 p-0" onClick={(e)=>{detailsPage(top)}}>
+                        <div className='container-fluid w-100 p-0  mt-2 blockHeight'>
+                        <img src={`https://image.tmdb.org/t/p/w500/${top.backdrop_path}`} alt="" />
+                          <h6 className="mt-3 mx-3 text-light">  {top.title}</h6>
+                          <p className="text-light mx-3"><span className="text-warning text-bold">★</span> {top.vote_average}</p>
+                    </div>
                     </div>
                 ))
             }
          </div>
+         <div ><button className='btn btn-primary mx-2' onClick={prevpage}>Prev</button><span className='mx-3 text-light'>Page : {page}</span><button className='btn btn-primary' onClick={nextpage}>Next </button></div>
+
            </div>
         </>
 }
